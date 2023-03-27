@@ -1,0 +1,49 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+            allowInsecureProtocol = true
+            url 'http://af.hikvision.com.cn:80/artifactory/trans-snapshot'
+            credentials {
+                username 'trans'
+                password 'trans'
+            }
+//            url 'http://10.12.112.16:8081/repository/zyh-hosted-snapshot/'
+//            credentials {
+//                username 'admin'
+//                password '19970903zyh'
+//            }
+        }
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven {
+            allowInsecureProtocol = true
+            url 'http://af.hikvision.com.cn:80/artifactory/trans-snapshot'
+            credentials {
+                username 'trans'
+                password 'trans'
+            }
+//            url 'http://10.12.112.16:8081/repository/zyh-hosted-snapshot/'
+//            credentials {
+//                username 'admin'
+//                password '19970903zyh'
+//            }
+        }
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "KarstLauncher"
+include ':app'
+include ':runtime'
+include ':loader'
+include ':manager'
+include ':plugin1'
+include ':base'
+include ':pluginview'
+include ':plugin2'

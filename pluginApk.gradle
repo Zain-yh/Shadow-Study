@@ -1,0 +1,68 @@
+
+apply plugin: 'com.tencent.shadow.plugin'
+
+shadow {
+    transform {
+//        useHostContext = ['abc']
+    }
+
+    packagePlugin {
+        pluginTypes {
+            debug {
+                loaderApkConfig = new Tuple2('loader-debug.apk', ':loader:assembleDebug')
+                runtimeApkConfig = new Tuple2('runtime-debug.apk', ':runtime:assembleDebug')
+                pluginApks {
+                    pluginApk1 {
+                        businessName =project.ext["businessName"]
+                        partKey = project.ext['partKey']
+                        buildTask =project.ext[ 'buildTaskDebug']
+                        apkPath = project.ext['apkPathDebug']
+                        hostWhiteList = ["com.tj.host_connector"]
+                        uuid=project.ext["uuid"]
+                    }
+//                    pluginApk4 {
+//                        businessName = "plugin2"
+//                        partKey = "plugin2"
+//                        buildTask = ":plugin2:assemblePluginDebug"
+//                        apkPath = "plugin2/build/outputs/apk/plugin/debug/plugin2-plugin-debug.apk"
+//                        hostWhiteList = ["com.tj.host_connector"]
+////                        uuid=project.ext["uuid"]
+//                    }
+                }
+            }
+            release {
+                loaderApkConfig = new Tuple2('loader-release.apk', ':loader:assembleRelease')
+                runtimeApkConfig = new Tuple2('runtime-release.apk', ':runtime:assembleRelease')
+                pluginApks {
+                    pluginApk1 {
+                        businessName =project.ext["businessName"]
+                        partKey = project.ext['partKey']
+                        buildTask =project.ext['buildTaskRelease']
+                        apkPath = project.ext['apkPathRelease']
+                        hostWhiteList = ["com.tj.host_connector"]
+                        uuid=project.ext["uuid"]
+                    }
+//                    pluginApk4 {
+//                        businessName = "plugin2"
+//                        partKey = "plugin2"
+//                        buildTask = ":plugin2:assemblePluginRelease"
+//                        apkPath = "plugin2/build/outputs/apk/plugin/release/plugin2-plugin-debug.apk"
+//                        hostWhiteList = ["com.tj.host_connector"]
+////                        uuid=project.ext["uuid"]
+//                    }
+
+                }
+            }
+        }
+        loaderApkProjectPath = 'loader/'
+        runtimeApkProjectPath = 'runtime/'
+
+        archiveSuffix = project.ext["archiveSuffix"]?: ""
+        archivePrefix = project.ext["archivePrefix"]
+        destinationDir = "${getRootProject().getBuildDir()}"
+
+        version = project.ext["version"]
+        compactVersion = [1, 2, 3]
+        uuidNickName = project.ext["uuidNickName"]
+    }
+}

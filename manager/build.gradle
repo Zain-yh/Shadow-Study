@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.young.manager'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.young.manager"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "display.interactive.htools.shadow.dynamic:manager:$shadow_version"
+    compileOnly "display.interactive.htools.shadow.core:common:$shadow_version"
+    compileOnly "display.interactive.htools.shadow.dynamic:host:$shadow_version"
+
+//    implementation "display.interactive.htools.shadow.dynamic:manager:${shadow_version}"
+//    implementation "display.interactive.htools.shadow.dynamic:loader:${shadow_version}"
+//    implementation "display.interactive.htools.shadow.core:manager:${shadow_version}"
+//    implementation "display.interactive.htools.shadow.core:loader:${shadow_version}"
+//    implementation "display.interactive.htools.shadow.dynamic:manager-multi-loader-ext:${shadow_version}"
+//    implementation "display.interactive.htools.shadow.dynamic:host-multi-loader-ext:${shadow_version}"
+
+    compileOnly project(':base')
+}
